@@ -55,12 +55,24 @@ function twitterSearch(){
         }
     });
 }
+
 function movieSearch(){
     omdb('http://www.omdbapi.com/?t=' + taskTwo + '&apikey=trilogy',  function (error, response, body) {
-        console.log('error:', error); // Print the error if one occurred
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-        console.log('body:', body); // Print the HTML for the Google homepage.
+        if(error){
+            console.log('error:', error);
+        }
+            // console.log('statusCode:', response && response.statusCode);
+    
+        console.log('\nRotten Tomatoes: ' + JSON.parse(body).Ratings[1].Value + '\n');
+        console.log('Title:' + JSON.parse(body).Title + '\n'); 
+        console.log('Title:' + JSON.parse(body).Released + '\n'); 
+        console.log('Title:' + JSON.parse(body).imdbRating + '\n');
+        console.log('\nCountry: ' + JSON.parse(body).Country + '\n'); 
+        console.log('\nLanguage: ' + JSON.parse(body).Language + '\n'); 
+        console.log('\nPlot: ' + JSON.parse(body).Plot + '\n'); 
+        console.log('\nActors: ' + JSON.parse(body).Actors + '\n'); 
+
+
+ 
     });
 }
- //Make so liri can take in the following commands:
- //`my-tweets`, `spotify-this-song`
